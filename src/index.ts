@@ -246,6 +246,7 @@ const createWindow = () => {
     ...(isLinux ? linuxMainWindowConf : {}),
   });
 
+  mainWindow.setContentProtection(true);
   enableWebContents(mainWindow.webContents);
   mainWindow.webContents.setWebRTCIPHandlingPolicy(webRTCIPHandlingPolicy);
 
@@ -580,6 +581,7 @@ ipcMain.on('open-browser-window', (_e, { url, serviceId }) => {
       session: serviceSession,
     },
   });
+  child.setContentProtection(true);
   enableWebContents(child.webContents);
   child.webContents.setWebRTCIPHandlingPolicy(webRTCIPHandlingPolicy);
   child.show();

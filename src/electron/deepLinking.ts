@@ -18,5 +18,6 @@ export default function handleDeepLink(
 
   if (!url || workaroundDeepLink.includes(url)) return;
 
+  window.setContentProtection(true);
   window.webContents.send('navigateFromDeepLink', { url });
 }
